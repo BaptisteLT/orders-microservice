@@ -15,7 +15,7 @@ Pour supprimer les containers avec les volumes :
 docker-compose down --volumes
 
 Pour accéder en local:
-Symfony : Mais
+Symfony : http://127.0.0.1:8080
 PhpMyAdmin : http://127.0.0.1:8081
 
 Pour éxec les commandes symfony:
