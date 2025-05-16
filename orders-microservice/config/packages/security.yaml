@@ -4,20 +4,21 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        jwt_provider:
+            lexik_jwt:
+                # This tells Symfony to extract roles from the JWT token
+                # Your external service should include roles in the token
+                class: Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUser
+            
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: users_in_memory
+            stateless: true  # Important for API-only JWT auth
+            provider: jwt_provider
+            jwt: ~
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
