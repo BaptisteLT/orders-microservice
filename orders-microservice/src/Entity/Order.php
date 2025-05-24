@@ -9,7 +9,9 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use App\Dto\OrderInputDto;
 use App\Repository\OrderRepository;
+use App\State\OrderProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,8 +21,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[Put(security: "is_granted('ROLE_ADMIN')")]
 #[Patch(security: "is_granted('ROLE_ADMIN')")]
-#[GetCollection(security: "is_granted('ROLE_ADMIN')")]
-#[Post(security: "is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")]
+#[GetCollection(
+    normalizationContext: ['groups' => ['customer:read:admin']],
+    security: "is_granted('ROLE_ADMIN')"
+    )
+]
+#[Post(
+        input: OrderInputDto::class,
+        processor: OrderProcessor::class,
+        security: "is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')"
+    )
+]
 #[Delete(security: "is_granted('ROLE_ADMIN')")]
 #[ApiResource(
     normalizationContext: ['groups' => ['customer:read']],
@@ -32,7 +43,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
             security: "is_granted('ROLE_ADMIN')",
             requirements: ['id' => '\d+']
         ),
-        new Get(security: "is_granted('ROLE_ADMIN') or (object.getCustomer() and object.getCustomer().getId() == user.getId())")    ]
+        new Get(
+            normalizationContext: ['groups' => ['customer:read']],
+            security: "is_granted('ROLE_ADMIN') or (object.getCustomer() and object.getCustomer().getCustomerUuid() == user.getId())"
+        ),
+        //Get orders a user owns or orders containing only items a web_shopper owns
+        new GetCollection(
+            uriTemplate: '/my-orders',
+            normalizationContext: ['groups' => ['customer:read']],
+            security: "is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_WEB_SHOPPER')"
+        ),
+    ]
 )]
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
@@ -43,18 +64,18 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["customer:read:user", "customer:read:admin", "customer:write"])]
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * @var Collection<int, Product>
      */
-    #[Groups(["customer:read:user", "customer:read:admin"])]
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin"])]
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'productOrder', orphanRemoval: true)]
     private Collection $product;
 
-    #[Groups(["customer:read:user", "customer:read:admin"])]
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin"])]
     #[ORM\OneToOne(inversedBy: 'customerOrder', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;

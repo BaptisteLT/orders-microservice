@@ -14,25 +14,28 @@ class Customer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["customer:read:user", "customer:read:admin"])]
+    //ON mets les champs firstname, lastname, etc pour figer dans le temps les informations de l'utilisateur au moment de la commande.
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
-    #[Groups(["customer:read:user", "customer:read:admin"])]
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
-    #[Groups(["customer:read:user", "customer:read:admin"])]
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
     #[ORM\Column(length: 255)]
     private ?string $postalCode = null;
 
-    #[Groups(["customer:read:user", "customer:read:admin"])]
+    #[Groups(["customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
+    //TODO quand POST order rajouter automatiqueemnt le customerUuid
     #[Groups(["customer:read:admin"])]
-    #[ORM\Column(nullable: true)]
-    private ?int $customerId = null;
+    #[ORM\Column(type: 'uuid', nullable: true)]
+    private ?string $customerUuid = null; 
+
 
     #[ORM\OneToOne(mappedBy: 'customer', cascade: ['persist', 'remove'])]
     private ?Order $customerOrder = null;
@@ -90,15 +93,14 @@ class Customer
         return $this;
     }
 
-    public function getCustomerId(): ?int
+    public function getCustomerUuid(): ?string
     {
-        return $this->customerId;
+        return $this->customerUuid;
     }
-
-    public function setCustomerId(?int $customerId): static
+    
+    public function setCustomerUuid(?string $customerUuid): self
     {
-        $this->customerId = $customerId;
-
+        $this->customerUuid = $customerUuid;
         return $this;
     }
 

@@ -8,8 +8,8 @@ security:
             lexik_jwt:
                 # This tells Symfony to extract roles from the JWT token
                 # Your external service should include roles in the token
-                class: Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUser
-            
+                class: App\Security\JWTUser
+                
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
