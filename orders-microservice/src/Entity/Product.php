@@ -18,17 +18,21 @@ class Product
     #[Groups(["customer:read:admin"])]
     private ?int $productId = null;
 
-    #[Groups(["customer:read", "customer:read:user", "customer:read:admin"])]
+    #[Groups(["webshopper:read", "customer:read", "customer:read:user", "customer:read:admin"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[Groups(["customer:read", "customer:read:user", "customer:read:admin"])]
+    #[Groups(["webshopper:read", "customer:read", "customer:read:user", "customer:read:admin"])]
     #[ORM\Column]
     private ?int $priceInCents = null;
 
     #[ORM\ManyToOne(inversedBy: 'product')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Order $productOrder = null;
+
+    #[Groups(["webshopper:read"])]
+    #[ORM\Column(type: 'uuid', nullable: true)]
+    private ?string $customerUuid = null; 
 
     public function getId(): ?int
     {
@@ -80,6 +84,17 @@ class Product
     {
         $this->productOrder = $productOrder;
 
+        return $this;
+    }
+
+    public function getCustomerUuid(): ?string
+    {
+        return $this->customerUuid;
+    }
+    
+    public function setCustomerUuid(?string $customerUuid): self
+    {
+        $this->customerUuid = $customerUuid;
         return $this;
     }
 }
