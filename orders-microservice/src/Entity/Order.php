@@ -53,6 +53,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
             normalizationContext: ['groups' => ['customer:read']],
             security: "is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_WEB_SHOPPER')"
         ),
+        //Pour ROLE_WEB_SHOPPER
+        new GetCollection(
+            uriTemplate: '/my-customers-orders',
+            normalizationContext: ['groups' => ["webshopper:read"]],
+            security: "is_granted('ROLE_ADMIN') or is_granted('ROLE_WEB_SHOPPER')"
+        ),
+        new Get(
+            uriTemplate: '/my-customers-orders/{id}',
+            normalizationContext: ['groups' => ['webshopper:read']],
+            security: "is_granted('ROLE_ADMIN') or is_granted('ROLE_WEB_SHOPPER')"
+        ),
     ]
 )]
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -64,18 +75,18 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
+    #[Groups(["webshopper:read", "customer:read", "customer:read:user", "customer:read:admin", "customer:write"])]
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * @var Collection<int, Product>
      */
-    #[Groups(["customer:read", "customer:read:user", "customer:read:admin"])]
+    #[Groups(["webshopper:read", "customer:read", "customer:read:user", "customer:read:admin"])]
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'productOrder', orphanRemoval: true)]
     private Collection $product;
 
-    #[Groups(["customer:read", "customer:read:user", "customer:read:admin"])]
+    #[Groups(["webshopper:read", "customer:read", "customer:read:user", "customer:read:admin"])]
     #[ORM\OneToOne(inversedBy: 'customerOrder', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
