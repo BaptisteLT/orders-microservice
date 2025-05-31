@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "bbd76333-2ec6-4fcc-afc1-a4c415527c2f",
+		"name": "Orders-microservice-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32774447"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET order USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/orders/2"
+					},
+					"response": []
+				},
+				{
+					"name": "GET own orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/my-orders"
+					},
+					"response": []
+				},
+				{
+					"name": "POST order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"createdAt\": \"2025-05-31T20:48:32.431Z\",\r\n  \"customer\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"postalCode\": \"string\",\r\n    \"city\": \"string\"\r\n  },\r\n  \"product\": [\r\n    {\r\n      \"productId\": 0,\r\n      \"name\": \"string\",\r\n      \"priceInCents\": 0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WebShopper",
+			"item": [
+				{
+					"name": "GET own orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/my-orders"
+					},
+					"response": []
+				},
+				{
+					"name": "GET own customers orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/my-customers-orders"
+					},
+					"response": []
+				},
+				{
+					"name": "GET own customer order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/my-orders/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "GET own orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/my-orders"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg1MjEzNjAsImV4cCI6MTc0ODUyNDk2MCwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.c0JP-Vei7gixNCtUTg3Y1EGB973BXd2VriQsCYgsYkuDw0EymsZVEodcTpFrXhs9bNfY--jEYsPhgktYTvOGOc9UlkC2sYqY4y3gpNM5tubwJbsNVy_nBkIP8VOJnHF90xkh4wc9uU0CImgvhvQEnAXeHRpyxIr1q6CkVUPYbTK6xS3_qtbKOsqUE30ZJL_WS8EiI5qiay_iEW_YoDNgEW--nMUB-wuHxd3NnvgwG8VHizxXmJ1xicA0a4CMe-YdwRppaidXaW6GCApcgHDfJKgdZ5iL3x3t9SBE2TwDNi3mfRatyTM0SQ3YuzHDX2b59bsCYfk3EnmxU4oKSEONYA"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"createdAt\": \"2025-05-31T20:44:08.642Z\",\r\n  \"product\": [\r\n    {\r\n      \"productId\": 0,\r\n      \"name\": \"string\",\r\n      \"priceInCents\": 0,\r\n      \"productOrder\": \"https://example.com/\",\r\n      \"customerUuid\": \"string\"\r\n    }\r\n  ],\r\n  \"customer\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"postalCode\": \"string\",\r\n    \"city\": \"string\",\r\n    \"customerUuid\": \"string\",\r\n    \"customerOrder\": \"https://example.com/\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8080/api/orders/5"
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"createdAt\": \"2025-05-31T20:44:08.642Z\",\r\n  \"product\": [\r\n    {\r\n      \"productId\": 0,\r\n      \"name\": \"string\",\r\n      \"priceInCents\": 0,\r\n      \"productOrder\": \"https://example.com/\",\r\n      \"customerUuid\": \"string\"\r\n    }\r\n  ],\r\n  \"customer\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"postalCode\": \"string\",\r\n    \"city\": \"string\",\r\n    \"customerUuid\": \"string\",\r\n    \"customerOrder\": \"https://example.com/\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8082/api/orders/5"
+					},
+					"response": []
+				},
+				{
+					"name": "POST order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"createdAt\": \"2025-05-31T20:48:32.431Z\",\r\n  \"customer\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"postalCode\": \"string\",\r\n    \"city\": \"string\"\r\n  },\r\n  \"product\": [\r\n    {\r\n      \"productId\": 0,\r\n      \"name\": \"string\",\r\n      \"priceInCents\": 0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8080/api/orders/2"
+					},
+					"response": []
+				},
+				{
+					"name": "GET order ADMIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDg3MjMwMzEsImV4cCI6MTc0ODcyNjYzMSwicm9sZXMiOlsiUk9MRV9XRUJfU0hPUFBFUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InN0cmluZyIsInV1aWQiOiIzZjI1MDRlMC00Zjg5LTQxZDMtOWEwYy0wMzA1ZTgyYzMzMDEifQ.bs4MQeGq3QcY-rOlM7P8ol8MOz0dNHuM-R_67XySUuzpC_GQD218tHvk8TmhFroajyyzrDj7i1TZK2xkAUbhNeX4D6ViCRnGpj-uoeBo2iaty0V60RZvDFOdc9Xd_Y1IYvsKuxCLZTHPT96W0Z_4w2eNwxBfyFdNDyK5ZfXeJyV744LNvamzqOY5gTUZHTal5TDiRVPqRcTwl0J1VQ3FaPN3228cHuPe1gtDsvxHCwiqKXBZsCIF-z-MfDQa8U-Q8w2T5eDrFFnWSC4OGEmcXMHJmw8RgZ-leuARV7wJXS2nrmDG2HRSWX7XqbhjtWZaWlw-M0zCeUjcDOnYwLALtw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8080/api/admin/orders/2"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
