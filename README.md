@@ -27,5 +27,6 @@ Pour récupérer un token JWT, il faut s'authentifier sur le micro-service custs
 Le covering est mis avec place avec PHPUnit et les commandes: run: vendor/bin/phpunit --coverage-clover clover.xml
 puis ./vendor/bin/coverage-check clover.xml 85
 dans phpunit.yml (github actions)
+La branche main est protégée dans le cas d'un pull request ayant un coverage de -85%
 
 La dette technique et l'analyse de sécurité etc est mis en place avec sonarqube cloud
