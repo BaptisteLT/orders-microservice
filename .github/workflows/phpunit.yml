@@ -44,22 +44,22 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
-        working-directory: ./customers-microservice
+        working-directory: ./orders-microservice
 
       - name: Prepare the database
         run: sudo systemctl start mysql
 
       - name: Fix permissions
         run: chmod +x bin/console
-        working-directory: ./customers-microservice
+        working-directory: ./orders-microservice
 
       - name: Run PHPUnit tests with coverage
         run: vendor/bin/phpunit --coverage-clover clover.xml
-        working-directory: ./customers-microservice
+        working-directory: ./orders-microservice
         env:
           APP_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.database.ports['3306'] }}/app_test
 
       - name: Enforce minimum code coverage
         run: ./vendor/bin/coverage-check clover.xml 85
-        working-directory: ./customers-microservice
+        working-directory: ./orders-microservice
