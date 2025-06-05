@@ -13,4 +13,8 @@ final class ProductInputDto
 
     #[Assert\NotNull]
     public int $priceInCents;
+
+    #[Assert\NotNull]
+    #[Assert\GreaterThanOrEqual(1)]
+    public int $quantity;
 }

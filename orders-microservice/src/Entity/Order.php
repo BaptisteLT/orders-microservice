@@ -91,6 +91,7 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
@@ -158,4 +159,5 @@ class Order
 
         return $this;
     }
+
 }
