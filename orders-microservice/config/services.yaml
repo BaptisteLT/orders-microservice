@@ -30,3 +30,5 @@ services:
     App\Serializer\WebShopperOrderGetFilterProductsNormalizer:
         tags:
             - { name: 'serializer.normalizer', priority: 101 }
+
+    Symfony\Component\Serializer\SerializerInterface: '@serializer'

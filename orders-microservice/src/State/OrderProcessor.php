@@ -9,12 +9,16 @@ use App\Entity\Customer;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Messenger\MessageBusInterface;
+use App\Message\OrderCreatedMessage;
+use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 
 class OrderProcessor implements ProcessorInterface
 {
     public function __construct(
         private EntityManagerInterface $em,
-        private Security $security
+        private Security $security,
+        private MessageBusInterface $bus,
         ) {}
 
 
@@ -38,13 +42,23 @@ class OrderProcessor implements ProcessorInterface
     
         $order->setCustomer($customer);
     
+        $productPayload = [];
+
         foreach ($data->product as $p) {
             $product = new Product();
             $product->setProductId($p->productId)
                     ->setName($p->name)
-                    ->setPriceInCents($p->priceInCents);
+                    ->setPriceInCents($p->priceInCents)
+                    ->setQuantity($p->quantity);
             $order->addProduct($product);
             $this->em->persist($product);
+
+            $productPayload[] = [
+                'productId' => $p->productId,
+                'name' => $p->name,
+                'priceInCents' => $p->priceInCents,
+                'quantity' => $p->quantity,
+            ];
         }
     
         $this->em->persist($order);
@@ -52,6 +66,13 @@ class OrderProcessor implements ProcessorInterface
     
         // ensure the returned order has an ID
         $managedOrder = $this->em->getRepository(Order::class)->find($order->getId());
+
+        //Message envoyé sur le topic orders configuré dans messenger.yaml
+        $this->bus->dispatch(new OrderCreatedMessage(
+            orderId: $order->getId(),
+            customerUuid: $user->getUuid(),
+            products: $productPayload
+        ),  [new AmqpStamp('order.created')]);
 
         return $managedOrder;
     }

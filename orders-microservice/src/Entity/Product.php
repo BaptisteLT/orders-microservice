@@ -34,6 +34,10 @@ class Product
     #[ORM\Column(type: 'uuid', nullable: true)]
     private ?string $customerUuid = null; 
 
+    #[ORM\Column]
+    private ?int $quantity = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,6 +51,19 @@ class Product
     public function setProductId(?int $productId): static
     {
         $this->productId = $productId;
+
+        return $this;
+    }
+
+    
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): static
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }
@@ -97,4 +114,6 @@ class Product
         $this->customerUuid = $customerUuid;
         return $this;
     }
+
+
 }

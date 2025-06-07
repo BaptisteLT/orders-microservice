@@ -91,6 +91,10 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $status = null;
+
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
@@ -158,4 +162,17 @@ class Order
 
         return $this;
     }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
 }
