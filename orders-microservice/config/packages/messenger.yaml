@@ -1,25 +1,48 @@
+# config/packages/messenger.yaml
 framework:
     messenger:
-        # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
-        # failure_transport: failed
+        serializer:
+            default_serializer: messenger.transport.symfony_serializer
+            symfony_serializer:
+                format: json
+                context: {}
 
         transports:
-            # https://symfony.com/doc/current/messenger.html#transport-configuration
-            # async: '%env(MESSENGER_TRANSPORT_DSN)%'
-            # failed: 'doctrine://default?queue_name=failed'
-            # sync: 'sync://'
-            async: 
+            # For sending OrderCreatedMessage to Products
+            orders_out:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 options:
                     exchange:
                         name: 'orders'
+                        type: topic
+
+            # For receiving responses from Products
+            orders_in:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: 'orders_responses'
+                        type: topic
+                    queues:
+                        orders_responses_queue:
+                            binding_keys: 
+                                - 'order.validated'
+                                - 'order.cancelled'
+
             failed:
                 dsn: 'doctrine://default?queue_name=failed'
-        #routing:
-            # Route your messages to the transports
-            # 'App\Message\YourMessage': async
+
         routing:
-            App\Message\OrderCreatedMessage: async
+            # Outgoing messages
+            App\Message\OrderCreatedMessage: orders_out
+            
+            # Incoming response messages
+            App\Message\OrderValidatedMessage: orders_in
+            App\Message\OrderCancelledMessage: orders_in
+
+        buses:
+            messenger.bus.default:
+                default_middleware: true
 
 # when@test:
 #    framework:

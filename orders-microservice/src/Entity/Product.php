@@ -114,4 +114,6 @@ class Product
         $this->customerUuid = $customerUuid;
         return $this;
     }
+
+
 }

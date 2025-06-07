@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Messenger\MessageBusInterface;
 use App\Message\OrderCreatedMessage;
+use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 
 class OrderProcessor implements ProcessorInterface
 {
@@ -71,7 +72,7 @@ class OrderProcessor implements ProcessorInterface
             orderId: $order->getId(),
             customerUuid: $user->getUuid(),
             products: $productPayload
-        ));
+        ),  [new AmqpStamp('order.created')]);
 
         return $managedOrder;
     }
